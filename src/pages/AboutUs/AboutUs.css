@@ -1,0 +1,454 @@
+:root {
+  --primary: #ff4757;
+  --primary-glow: rgba(255, 71, 87, 0.4);
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --dark: #2d3436;
+  --gray: #636e72;
+  --bg-soft: #f9f9f9;
+}
+
+.about-wrapper {
+  background-color: var(--bg-soft);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.about-hero {
+  height: 60vh;
+  background: linear-gradient(135deg, #2d3436 0%, #000000 100%),
+              url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80') center/cover;
+  background-blend-mode: overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  margin-bottom: 40px;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeUp 1s ease-out;
+}
+
+.about-hero h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.about-hero h1 span {
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--primary-glow);
+}
+
+.hero-subtext {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mouse Scroll Animation */
+.hero-scroll-btn {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.mouse::before {
+  content: '';
+  width: 4px;
+  height: 8px;
+  background: white;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+  0% { opacity: 1; top: 8px; }
+  100% { opacity: 0; top: 25px; }
+}
+
+/* Sections Global Styles */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.section-header h2 span {
+  color: var(--primary);
+}
+
+.header-line {
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+/* Values Section */
+.values-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.value-card {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+  animation: fadeUp 0.8s ease backwards;
+  animation-delay: var(--delay);
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.value-icon-box {
+  width: 70px;
+  height: 70px;
+  background: #fff5f6;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  color: var(--primary);
+  transition: all 0.4s ease;
+}
+
+.value-card:hover .value-icon-box {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1) rotate(10deg);
+}
+
+.v-icon { width: 32px; height: 32px; }
+
+/* Team Section */
+.team-section {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.team-card {
+  perspective: 1000px;
+  height: 380px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.team-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card-front {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+}
+
+.card-back {
+  background: var(--primary);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.avatar-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 5px solid white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 5px;
+}
+
+.card-front .role {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.creator-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.creator-socials a {
+  color: var(--primary);
+  background: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.creator-socials a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Contact Section Redesign */
+.contact-section {
+  padding: 100px 20px;
+  background: var(--bg-soft);
+}
+
+.contact-glass-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+  flex: 1;
+  background: var(--dark);
+  color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.contact-info h2 span { color: var(--primary); }
+
+.contact-info p {
+  opacity: 0.8;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.i-icon { color: var(--primary); }
+
+.contact-form-side {
+  flex: 1.2;
+  padding: 60px;
+  background: white;
+}
+
+.premium-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.input-field {
+  position: relative;
+}
+
+.input-field input, .input-field textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 2px solid #eee;
+  background: transparent;
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-field label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label,
+.input-field textarea:focus ~ label,
+.input-field textarea:not(:placeholder-shown) ~ label {
+  top: -15px;
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.input-field input:focus, .input-field textarea:focus {
+  border-bottom-color: var(--primary);
+}
+
+.glow-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px var(--primary-glow);
+}
+
+.glow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px var(--primary-glow);
+}
+
+.login-prompt {
+  text-align: center;
+  padding: 40px;
+}
+
+.prompt-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.success-banner {
+  margin-top: 25px;
+  padding: 15px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .contact-glass-card { flex-direction: column; margin: 0 20px; }
+  .about-hero h1 { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .about-hero { height: 50vh; }
+  .about-hero h1 { font-size: 2.5rem; }
+  .values-grid { grid-template-columns: 1fr; }
+  .contact-info, .contact-form-side { padding: 40px; }
+  .team-grid { gap: 25px; }
+}
+
+@media (max-width: 480px) {
+  .about-hero h1 { font-size: 2rem; }
+  .section-header h2 { font-size: 1.8rem; }
+}
