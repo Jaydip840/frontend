@@ -5,8 +5,8 @@ export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
 
-    // const url = "https://foodmasters-backend.onrender.com"
-    const url = "http://localhost:4000"
+    const url = "https://backend-c6ta.onrender.com"
+    // const url = "http://localhost:4000"
     const [cartItems, setCartItems] = useState({});
     const [role, setRole] = useState(localStorage.getItem("role") || "");
     const [token, setToken] = useState("");
@@ -202,17 +202,17 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         async function loadData() {
             await fetchFoodList();
-            
+
             // Check for Admin Auto-Login URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const adminToken = urlParams.get('adminToken');
             const adminEmail = urlParams.get('adminEmail');
-            
+
             if (adminToken && adminEmail) {
                 // Save admin token and mock email to localStorage
                 localStorage.setItem("token", adminToken);
                 localStorage.setItem("email", adminEmail);
-                
+
                 // Clear the URL to avoid showing the token securely
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
